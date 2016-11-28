@@ -1,0 +1,528 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5848DAAE1DEC263600751722 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5848DAAD1DEC263600751722 /* AppDelegate.swift */; };
+		5848DAB01DEC263600751722 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5848DAAF1DEC263600751722 /* ViewController.swift */; };
+		5848DAB21DEC263600751722 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5848DAB11DEC263600751722 /* Assets.xcassets */; };
+		5848DAB51DEC263600751722 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5848DAB31DEC263600751722 /* Main.storyboard */; };
+		5848DAC01DEC263600751722 /* Linear_AdjusterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5848DABF1DEC263600751722 /* Linear_AdjusterTests.swift */; };
+		5848DACB1DEC263600751722 /* Linear_AdjusterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5848DACA1DEC263600751722 /* Linear_AdjusterUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5848DABC1DEC263600751722 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5848DAA21DEC263500751722 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5848DAA91DEC263500751722;
+			remoteInfo = "Linear Adjuster";
+		};
+		5848DAC71DEC263600751722 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5848DAA21DEC263500751722 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5848DAA91DEC263500751722;
+			remoteInfo = "Linear Adjuster";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5848DAAA1DEC263600751722 /* Linear Adjuster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Linear Adjuster.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5848DAAD1DEC263600751722 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5848DAAF1DEC263600751722 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5848DAB11DEC263600751722 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5848DAB41DEC263600751722 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5848DAB61DEC263600751722 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5848DABB1DEC263600751722 /* Linear AdjusterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Linear AdjusterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5848DABF1DEC263600751722 /* Linear_AdjusterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Linear_AdjusterTests.swift; sourceTree = "<group>"; };
+		5848DAC11DEC263600751722 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5848DAC61DEC263600751722 /* Linear AdjusterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Linear AdjusterUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5848DACA1DEC263600751722 /* Linear_AdjusterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Linear_AdjusterUITests.swift; sourceTree = "<group>"; };
+		5848DACC1DEC263600751722 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5848DAA71DEC263500751722 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5848DAB81DEC263600751722 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5848DAC31DEC263600751722 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5848DAA11DEC263500751722 = {
+			isa = PBXGroup;
+			children = (
+				5848DAAC1DEC263600751722 /* Linear Adjuster */,
+				5848DABE1DEC263600751722 /* Linear AdjusterTests */,
+				5848DAC91DEC263600751722 /* Linear AdjusterUITests */,
+				5848DAAB1DEC263600751722 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5848DAAB1DEC263600751722 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5848DAAA1DEC263600751722 /* Linear Adjuster.app */,
+				5848DABB1DEC263600751722 /* Linear AdjusterTests.xctest */,
+				5848DAC61DEC263600751722 /* Linear AdjusterUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5848DAAC1DEC263600751722 /* Linear Adjuster */ = {
+			isa = PBXGroup;
+			children = (
+				5848DAAD1DEC263600751722 /* AppDelegate.swift */,
+				5848DAAF1DEC263600751722 /* ViewController.swift */,
+				5848DAB11DEC263600751722 /* Assets.xcassets */,
+				5848DAB31DEC263600751722 /* Main.storyboard */,
+				5848DAB61DEC263600751722 /* Info.plist */,
+			);
+			path = "Linear Adjuster";
+			sourceTree = "<group>";
+		};
+		5848DABE1DEC263600751722 /* Linear AdjusterTests */ = {
+			isa = PBXGroup;
+			children = (
+				5848DABF1DEC263600751722 /* Linear_AdjusterTests.swift */,
+				5848DAC11DEC263600751722 /* Info.plist */,
+			);
+			path = "Linear AdjusterTests";
+			sourceTree = "<group>";
+		};
+		5848DAC91DEC263600751722 /* Linear AdjusterUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5848DACA1DEC263600751722 /* Linear_AdjusterUITests.swift */,
+				5848DACC1DEC263600751722 /* Info.plist */,
+			);
+			path = "Linear AdjusterUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5848DAA91DEC263500751722 /* Linear Adjuster */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5848DACF1DEC263600751722 /* Build configuration list for PBXNativeTarget "Linear Adjuster" */;
+			buildPhases = (
+				5848DAA61DEC263500751722 /* Sources */,
+				5848DAA71DEC263500751722 /* Frameworks */,
+				5848DAA81DEC263500751722 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Linear Adjuster";
+			productName = "Linear Adjuster";
+			productReference = 5848DAAA1DEC263600751722 /* Linear Adjuster.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5848DABA1DEC263600751722 /* Linear AdjusterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5848DAD21DEC263600751722 /* Build configuration list for PBXNativeTarget "Linear AdjusterTests" */;
+			buildPhases = (
+				5848DAB71DEC263600751722 /* Sources */,
+				5848DAB81DEC263600751722 /* Frameworks */,
+				5848DAB91DEC263600751722 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5848DABD1DEC263600751722 /* PBXTargetDependency */,
+			);
+			name = "Linear AdjusterTests";
+			productName = "Linear AdjusterTests";
+			productReference = 5848DABB1DEC263600751722 /* Linear AdjusterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5848DAC51DEC263600751722 /* Linear AdjusterUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5848DAD51DEC263600751722 /* Build configuration list for PBXNativeTarget "Linear AdjusterUITests" */;
+			buildPhases = (
+				5848DAC21DEC263600751722 /* Sources */,
+				5848DAC31DEC263600751722 /* Frameworks */,
+				5848DAC41DEC263600751722 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5848DAC81DEC263600751722 /* PBXTargetDependency */,
+			);
+			name = "Linear AdjusterUITests";
+			productName = "Linear AdjusterUITests";
+			productReference = 5848DAC61DEC263600751722 /* Linear AdjusterUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5848DAA21DEC263500751722 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "沢谷邦夫";
+				TargetAttributes = {
+					5848DAA91DEC263500751722 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = FZGUA6AGMY;
+						ProvisioningStyle = Automatic;
+					};
+					5848DABA1DEC263600751722 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = FZGUA6AGMY;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5848DAA91DEC263500751722;
+					};
+					5848DAC51DEC263600751722 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = FZGUA6AGMY;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5848DAA91DEC263500751722;
+					};
+				};
+			};
+			buildConfigurationList = 5848DAA51DEC263500751722 /* Build configuration list for PBXProject "Linear Adjuster" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5848DAA11DEC263500751722;
+			productRefGroup = 5848DAAB1DEC263600751722 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5848DAA91DEC263500751722 /* Linear Adjuster */,
+				5848DABA1DEC263600751722 /* Linear AdjusterTests */,
+				5848DAC51DEC263600751722 /* Linear AdjusterUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5848DAA81DEC263500751722 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5848DAB21DEC263600751722 /* Assets.xcassets in Resources */,
+				5848DAB51DEC263600751722 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5848DAB91DEC263600751722 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5848DAC41DEC263600751722 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5848DAA61DEC263500751722 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5848DAB01DEC263600751722 /* ViewController.swift in Sources */,
+				5848DAAE1DEC263600751722 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5848DAB71DEC263600751722 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5848DAC01DEC263600751722 /* Linear_AdjusterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5848DAC21DEC263600751722 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5848DACB1DEC263600751722 /* Linear_AdjusterUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5848DABD1DEC263600751722 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5848DAA91DEC263500751722 /* Linear Adjuster */;
+			targetProxy = 5848DABC1DEC263600751722 /* PBXContainerItemProxy */;
+		};
+		5848DAC81DEC263600751722 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5848DAA91DEC263500751722 /* Linear Adjuster */;
+			targetProxy = 5848DAC71DEC263600751722 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5848DAB31DEC263600751722 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5848DAB41DEC263600751722 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5848DACD1DEC263600751722 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5848DACE1DEC263600751722 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		5848DAD01DEC263600751722 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = FZGUA6AGMY;
+				INFOPLIST_FILE = "Linear Adjuster/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.fathens.Linear-Adjuster";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		5848DAD11DEC263600751722 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = FZGUA6AGMY;
+				INFOPLIST_FILE = "Linear Adjuster/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.fathens.Linear-Adjuster";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		5848DAD31DEC263600751722 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = FZGUA6AGMY;
+				INFOPLIST_FILE = "Linear AdjusterTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.fathens.Linear-AdjusterTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Linear Adjuster.app/Contents/MacOS/Linear Adjuster";
+			};
+			name = Debug;
+		};
+		5848DAD41DEC263600751722 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = FZGUA6AGMY;
+				INFOPLIST_FILE = "Linear AdjusterTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.fathens.Linear-AdjusterTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Linear Adjuster.app/Contents/MacOS/Linear Adjuster";
+			};
+			name = Release;
+		};
+		5848DAD61DEC263600751722 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = FZGUA6AGMY;
+				INFOPLIST_FILE = "Linear AdjusterUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.fathens.Linear-AdjusterUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Linear Adjuster";
+			};
+			name = Debug;
+		};
+		5848DAD71DEC263600751722 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = FZGUA6AGMY;
+				INFOPLIST_FILE = "Linear AdjusterUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.fathens.Linear-AdjusterUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Linear Adjuster";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5848DAA51DEC263500751722 /* Build configuration list for PBXProject "Linear Adjuster" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5848DACD1DEC263600751722 /* Debug */,
+				5848DACE1DEC263600751722 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5848DACF1DEC263600751722 /* Build configuration list for PBXNativeTarget "Linear Adjuster" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5848DAD01DEC263600751722 /* Debug */,
+				5848DAD11DEC263600751722 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5848DAD21DEC263600751722 /* Build configuration list for PBXNativeTarget "Linear AdjusterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5848DAD31DEC263600751722 /* Debug */,
+				5848DAD41DEC263600751722 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5848DAD51DEC263600751722 /* Build configuration list for PBXNativeTarget "Linear AdjusterUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5848DAD61DEC263600751722 /* Debug */,
+				5848DAD71DEC263600751722 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5848DAA21DEC263500751722 /* Project object */;
+}
