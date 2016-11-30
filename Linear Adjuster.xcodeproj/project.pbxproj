@@ -400,6 +400,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = FZGUA6AGMY;
 				INFOPLIST_FILE = "Linear Adjuster/Info.plist";
@@ -414,6 +415,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = FZGUA6AGMY;
 				INFOPLIST_FILE = "Linear Adjuster/Info.plist";
@@ -505,6 +507,7 @@
 				5848DAD11DEC263600751722 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5848DAD21DEC263600751722 /* Build configuration list for PBXNativeTarget "Linear AdjusterTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +516,7 @@
 				5848DAD41DEC263600751722 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5848DAD51DEC263600751722 /* Build configuration list for PBXNativeTarget "Linear AdjusterUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +525,7 @@
 				5848DAD71DEC263600751722 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
