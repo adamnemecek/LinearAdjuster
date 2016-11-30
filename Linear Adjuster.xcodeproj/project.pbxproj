@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22C1179B8C95976E5CA0ECCC /* Pods_Linear_Adjuster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC780822226B43226D0402E4 /* Pods_Linear_Adjuster.framework */; };
 		5848DAAE1DEC263600751722 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5848DAAD1DEC263600751722 /* AppDelegate.swift */; };
 		5848DAB01DEC263600751722 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5848DAAF1DEC263600751722 /* ViewController.swift */; };
 		5848DAB21DEC263600751722 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5848DAB11DEC263600751722 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14BB6514AF7C12D363B497A2 /* Pods-Linear Adjuster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Linear Adjuster.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Linear Adjuster/Pods-Linear Adjuster.debug.xcconfig"; sourceTree = "<group>"; };
 		5848DAAA1DEC263600751722 /* Linear Adjuster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Linear Adjuster.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5848DAAD1DEC263600751722 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5848DAAF1DEC263600751722 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +47,8 @@
 		5848DAC61DEC263600751722 /* Linear AdjusterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Linear AdjusterUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5848DACA1DEC263600751722 /* Linear_AdjusterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Linear_AdjusterUITests.swift; sourceTree = "<group>"; };
 		5848DACC1DEC263600751722 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B6FF05C9549901F4C33AC33 /* Pods-Linear Adjuster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Linear Adjuster.release.xcconfig"; path = "Pods/Target Support Files/Pods-Linear Adjuster/Pods-Linear Adjuster.release.xcconfig"; sourceTree = "<group>"; };
+		BC780822226B43226D0402E4 /* Pods_Linear_Adjuster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Linear_Adjuster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22C1179B8C95976E5CA0ECCC /* Pods_Linear_Adjuster.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +77,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2ECD650D7A6DFB30861C2C0E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC780822226B43226D0402E4 /* Pods_Linear_Adjuster.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5848DAA11DEC263500751722 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +92,8 @@
 				5848DABE1DEC263600751722 /* Linear AdjusterTests */,
 				5848DAC91DEC263600751722 /* Linear AdjusterUITests */,
 				5848DAAB1DEC263600751722 /* Products */,
+				94E30B24F35EC27148C77738 /* Pods */,
+				2ECD650D7A6DFB30861C2C0E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +137,15 @@
 			path = "Linear AdjusterUITests";
 			sourceTree = "<group>";
 		};
+		94E30B24F35EC27148C77738 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				14BB6514AF7C12D363B497A2 /* Pods-Linear Adjuster.debug.xcconfig */,
+				9B6FF05C9549901F4C33AC33 /* Pods-Linear Adjuster.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,9 +153,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5848DACF1DEC263600751722 /* Build configuration list for PBXNativeTarget "Linear Adjuster" */;
 			buildPhases = (
+				ABDDB549BD51D3EF605EF08C /* [CP] Check Pods Manifest.lock */,
 				5848DAA61DEC263500751722 /* Sources */,
 				5848DAA71DEC263500751722 /* Frameworks */,
 				5848DAA81DEC263500751722 /* Resources */,
+				54384856BA91EE7E03508E47 /* [CP] Embed Pods Frameworks */,
+				3E29096E969B958EEB64EEB6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,6 +280,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3E29096E969B958EEB64EEB6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Linear Adjuster/Pods-Linear Adjuster-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54384856BA91EE7E03508E47 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Linear Adjuster/Pods-Linear Adjuster-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ABDDB549BD51D3EF605EF08C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5848DAA61DEC263500751722 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -324,6 +399,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -373,6 +449,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -398,7 +475,9 @@
 		};
 		5848DAD01DEC263600751722 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14BB6514AF7C12D363B497A2 /* Pods-Linear Adjuster.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -413,7 +492,9 @@
 		};
 		5848DAD11DEC263600751722 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B6FF05C9549901F4C33AC33 /* Pods-Linear Adjuster.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;

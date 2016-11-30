@@ -8,6 +8,18 @@
 
 import Cocoa
 import Quartz
+import XCGLogger
+
+let log: XCGLogger = {
+    let log = XCGLogger.default
+    #if DEBUG
+        log.setup(level: .debug, showThreadName: true, showLevel: true, showFileNames: true, showLineNumbers: true, writeToFile: nil, fileLevel: .debug)
+    #else
+        log.setup(level: .severe, showThreadName: true, showLevel: true, showFileNames: true, showLineNumbers: false, writeToFile: nil, fileLevel: .debug)
+    #endif
+    return log
+}()
+
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -23,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func openFile(_ sender: Any) {
-        print("Opening Dialog...")
+        log.info("Opening Dialog...")
         
         let panel = NSOpenPanel()
         panel.canChooseFiles = true
@@ -34,21 +46,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         panel.begin(completionHandler: { (status) in
             if status == NSModalResponseOK {
                 if let url = panel.url {
-                    print("Choosed file: \(url)")
+                    log.debug("Choosed file: \(url)")
                     self.loadPdf(url)
                 } else {
-                    print("No valid url")
+                    log.warning("No valid url")
                 }
             } else {
-                print("No file choosed")
+                log.info("No file choosed")
             }
         })
     }
     
     private func loadPdf(_ url: URL) {
         print("Loading PDF: \(url)")
-        let pdf = PDFDocument(url: url)
         if let view = pdfView {
+            let pdf = PDFDocument(url: url)
             view.document = pdf
         }
     }
