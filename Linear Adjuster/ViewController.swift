@@ -7,13 +7,22 @@
 //
 
 import Cocoa
+import Quartz
 
 class ViewController: NSViewController {
-
+    
+    @IBOutlet weak var pdfView: PDFView!
+    
+    let app: AppDelegate = NSApplication.shared().delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        pdfView.autoScales = false
+        pdfView.scaleFactor = 1.0
+        pdfView.displaysPageBreaks = false
 
-        // Do any additional setup after loading the view.
+        app.pdfView = pdfView
     }
 
     override var representedObject: Any? {
