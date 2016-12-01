@@ -7,9 +7,10 @@
 //
 
 import Cocoa
+
 class MtrixView: NSView {
     private let unitSize = CGFloat(100.0)
-    private var currentState = ViewState.neutral
+    private var currentState = ViewState.identity
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -18,10 +19,9 @@ class MtrixView: NSView {
         NSColor.white.setFill()
         NSRectFill(bounds)
         
-        let affine = NSAffineTransform()
-        affine.scale(by: currentState.zoom)
-        affine.rotate(byDegrees: currentState.rotationInDegrees)
-        affine.set()
+        if let layer = self.layer {
+            currentState.transform(layer: layer)
+        }
         
         let unit = CGFloat(unitSize * currentState.zoom)
         let startX = dirtyRect.minX

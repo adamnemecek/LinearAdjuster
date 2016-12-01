@@ -16,7 +16,7 @@ class ViewController: NSViewController {
     
     let app: AppDelegate = NSApplication.shared().delegate as! AppDelegate
     
-    private var state = ViewState.neutral
+    private var state = ViewState.identity
     private var preState: ViewState?
     
     override func viewDidLoad() {
@@ -55,7 +55,7 @@ class ViewController: NSViewController {
     
     @IBAction func rotationGesture(_ sender: Any) {
         if let g = sender as? NSRotationGestureRecognizer {
-            changeState(gesture: g, offset: ViewState(rotationInDegrees: g.rotationInDegrees))
+            changeState(gesture: g, offset: ViewState(rotation: g.rotation))
         }
     }
     
