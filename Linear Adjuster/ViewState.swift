@@ -15,16 +15,16 @@ struct ViewState {
     init(zoom: CGFloat = 0, rotation: CGFloat = 0, skew: NSPoint = NSPoint(x: 0, y: 0)) {
         self.zoom = zoom
         self.rotation = rotation
-        self.skew = skew
+        self.skew = (h: skew.x, v: skew.y)
     }
     
     let zoom: CGFloat
     let rotation: CGFloat
-    let skew: NSPoint
+    let skew: (h: CGFloat, v: CGFloat)
     
     func transform(layer: CALayer) {
         log.debug("Transforming: \(self)")
-        
+
         func setAffine() {
             var affine = CGAffineTransform()
             affine = affine.scaledBy(x: zoom, y: zoom)
@@ -34,8 +34,8 @@ struct ViewState {
             var tr = CATransform3DIdentity
             tr.m34 = CGFloat(-1.0/2000)
             tr = CATransform3DRotate(tr, -rotation, 0, 0, 1)
-            tr = CATransform3DRotate(tr, toRadians(fromDegrees: skew.x), 0, 1, 0)
-            tr = CATransform3DRotate(tr, -toRadians(fromDegrees: skew.y), 1, 0, 0)
+            tr = CATransform3DRotate(tr, toRadians(fromDegrees: skew.h), 0, 1, 0)
+            tr = CATransform3DRotate(tr, -toRadians(fromDegrees: skew.v), 1, 0, 0)
             log.debug("Transform3D: \(tr)")
             layer.transform = tr
         }
@@ -49,14 +49,14 @@ extension ViewState {
         return ViewState(
             zoom: left.zoom + right.zoom,
             rotation: normalize(radians: left.rotation + right.rotation),
-            skew: left.skew + right.skew)
+            skew: NSPoint(x: left.skew.h + right.skew.h, y: left.skew.v + right.skew.v))
     }
     
     static func -(left: ViewState, right: ViewState) -> ViewState {
         return ViewState(
             zoom: left.zoom - right.zoom,
             rotation: normalize(radians: left.rotation - right.rotation),
-            skew: left.skew - right.skew)
+            skew: NSPoint(x: left.skew.h - right.skew.h, y: left.skew.v - right.skew.v))
     }
 }
 
@@ -69,15 +69,6 @@ fileprivate func normalize(radians: CGFloat) -> CGFloat {
         return v - p2
     } else {
         return v
-    }
-}
-
-fileprivate extension NSPoint {
-    static func +(left: NSPoint, right: NSPoint) -> NSPoint {
-        return NSPoint(x: left.x + right.x, y: left.y + right.y)
-    }
-    static func -(left: NSPoint, right: NSPoint) -> NSPoint {
-        return NSPoint(x: left.x - right.x, y: left.y - right.y)
     }
 }
 
