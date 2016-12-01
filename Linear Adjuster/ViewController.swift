@@ -42,7 +42,8 @@ class ViewController: NSViewController {
         default: break
         }
         if let pre = preState {
-            mtrixView.update(viewState: pre + offset)
+            state = pre + offset
+            mtrixView.update(viewState: state)
         }
     }
     
