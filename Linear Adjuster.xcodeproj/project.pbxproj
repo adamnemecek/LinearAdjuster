@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22C1179B8C95976E5CA0ECCC /* Pods_Linear_Adjuster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC780822226B43226D0402E4 /* Pods_Linear_Adjuster.framework */; };
+		583A17B31DEFB5F200C01396 /* MtrixView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583A17B21DEFB5F200C01396 /* MtrixView.swift */; };
 		5848DAAE1DEC263600751722 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5848DAAD1DEC263600751722 /* AppDelegate.swift */; };
 		5848DAB01DEC263600751722 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5848DAAF1DEC263600751722 /* ViewController.swift */; };
 		5848DAB21DEC263600751722 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5848DAB11DEC263600751722 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		14BB6514AF7C12D363B497A2 /* Pods-Linear Adjuster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Linear Adjuster.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Linear Adjuster/Pods-Linear Adjuster.debug.xcconfig"; sourceTree = "<group>"; };
+		583A17B21DEFB5F200C01396 /* MtrixView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MtrixView.swift; sourceTree = "<group>"; };
 		5848DAAA1DEC263600751722 /* Linear Adjuster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Linear Adjuster.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5848DAAD1DEC263600751722 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5848DAAF1DEC263600751722 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				5848DAB11DEC263600751722 /* Assets.xcassets */,
 				5848DAB31DEC263600751722 /* Main.storyboard */,
 				5848DAB61DEC263600751722 /* Info.plist */,
+				583A17B21DEFB5F200C01396 /* MtrixView.swift */,
 			);
 			path = "Linear Adjuster";
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				583A17B31DEFB5F200C01396 /* MtrixView.swift in Sources */,
 				5848DAB01DEC263600751722 /* ViewController.swift in Sources */,
 				5848DAAE1DEC263600751722 /* AppDelegate.swift in Sources */,
 			);

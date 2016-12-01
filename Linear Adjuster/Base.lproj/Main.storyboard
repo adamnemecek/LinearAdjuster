@@ -690,15 +690,40 @@
                             <pdfView autoresizesSubviews="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEf-Zj-XiD">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                             </pdfView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="djD-Rb-HAq" customClass="MtrixView" customModule="Linear_Adjuster" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                <gestureRecognizers>
+                                    <panGestureRecognizer delaysPrimaryMouseButtonEvents="YES" id="sfP-fW-rCt">
+                                        <connections>
+                                            <action selector="panGesture:" target="XfG-lQ-9wD" id="6Zq-Yq-sJE"/>
+                                        </connections>
+                                    </panGestureRecognizer>
+                                    <rotationGestureRecognizer delaysRotationEvents="YES" id="fiv-mH-eG1">
+                                        <connections>
+                                            <action selector="rotationGesture:" target="XfG-lQ-9wD" id="ejJ-GM-i61"/>
+                                        </connections>
+                                    </rotationGestureRecognizer>
+                                    <magnificationGestureRecognizer delaysMagnificationEvents="YES" magnification="0.0" id="xDX-6v-Pde">
+                                        <connections>
+                                            <action selector="zoomGesture:" target="XfG-lQ-9wD" id="b5P-Lt-td8"/>
+                                        </connections>
+                                    </magnificationGestureRecognizer>
+                                </gestureRecognizers>
+                            </customView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="GEf-Zj-XiD" secondAttribute="bottom" id="Fet-cP-eYo"/>
                             <constraint firstItem="GEf-Zj-XiD" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="gkX-mU-BHS"/>
+                            <constraint firstItem="djD-Rb-HAq" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="jmT-Lf-FDb"/>
                             <constraint firstAttribute="trailing" secondItem="GEf-Zj-XiD" secondAttribute="trailing" id="qAh-vC-zXS"/>
+                            <constraint firstAttribute="trailing" secondItem="djD-Rb-HAq" secondAttribute="trailing" id="tmb-gc-dt3"/>
                             <constraint firstItem="GEf-Zj-XiD" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="trP-OA-kMI"/>
+                            <constraint firstItem="djD-Rb-HAq" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="w8b-tW-lzh"/>
+                            <constraint firstAttribute="bottom" secondItem="djD-Rb-HAq" secondAttribute="bottom" id="xNO-Lu-jCa"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mtrixView" destination="djD-Rb-HAq" id="Liy-71-N8F"/>
                         <outlet property="pdfView" destination="GEf-Zj-XiD" id="1XC-Ga-0Ya"/>
                     </connections>
                 </viewController>
