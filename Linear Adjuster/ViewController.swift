@@ -16,7 +16,6 @@ class ViewController: NSViewController {
     
     let app: AppDelegate = NSApplication.shared().delegate as! AppDelegate
     
-    private var state = ViewState.identity
     private var preState: ViewState?
     
     override func viewDidLoad() {
@@ -37,13 +36,13 @@ class ViewController: NSViewController {
     
     private func changeState(gesture: NSGestureRecognizer, offset: ViewState) {
         switch gesture.state {
-        case .began: preState = state
+        case .began: preState = app.viewState
         case .ended: preState = nil
         default: break
         }
         if let pre = preState {
-            state = pre + offset
-            mtrixView.update(viewState: state)
+            app.viewState = pre + offset
+            mtrixView.update(viewState: app.viewState)
         }
     }
     

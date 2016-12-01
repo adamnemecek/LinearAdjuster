@@ -26,7 +26,8 @@ let log: XCGLogger = {
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
+    
+    var viewState = ViewState.identity
     var pdfView: PDFView?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
