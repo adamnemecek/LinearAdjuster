@@ -23,24 +23,23 @@ struct ViewState {
     let skew: NSPoint
     
     func transform(layer: CALayer) {
-        log.debug("Transforming: \(self)")
+        let center = NSPoint(
+            x: (layer.frame.minX + layer.frame.maxX) / 2,
+            y: (layer.frame.minY + layer.frame.maxY) / 2)
 
-        func setAffine() {
-            var affine = CGAffineTransform()
-            affine = affine.scaledBy(x: zoom, y: zoom)
-            layer.setAffineTransform(affine)
-        }
-        func setTransform() {
+        layer.anchorPoint = NSPoint(x: 0.5, y: 0.5)
+        layer.position = center
+        layer.transform = {
             var tr = CATransform3DIdentity
             tr.m34 = CGFloat(-1.0/2000)
-            tr = CATransform3DRotate(tr, -rotation, 0, 0, 1)
-            tr = CATransform3DRotate(tr, toRadians(fromDegrees: skew.h), 0, 1, 0)
-            tr = CATransform3DRotate(tr, -toRadians(fromDegrees: skew.v), 1, 0, 0)
-            log.debug("Transform3D: \(tr)")
-            layer.transform = tr
-        }
-        setTransform()
-        setAffine()
+            tr = CATransform3DScale(tr, zoom, zoom, zoom)
+            tr = CATransform3DRotate(tr, rotation, 0, 0, 1)
+            tr = CATransform3DRotate(tr, toRadians(fromDegrees: skew.x), 0, 1, 0)
+            tr = CATransform3DRotate(tr, toRadians(fromDegrees: skew.y), -1, 0, 0)
+            
+            log.debug("Transforming: \(self) -> \(tr)")
+            return tr
+        }()
     }
 }
 
