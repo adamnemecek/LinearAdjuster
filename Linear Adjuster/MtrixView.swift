@@ -8,7 +8,8 @@
 
 import Cocoa
 
-fileprivate let unit = CGFloat(100.0)
+fileprivate let dpi: CGFloat = 120
+fileprivate let unit = dpi / 2.54
 fileprivate let canvasSize = NSSize(width: unit * 30, height: unit * 30)
 
 class MtrixView: NSView {
