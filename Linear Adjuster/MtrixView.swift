@@ -9,7 +9,7 @@
 import Cocoa
 
 class MtrixView: NSView {
-    private let mtrix = Mtrix(dpi: 120)
+    private let mtrix = Mtrix()
 
     override func awakeFromNib() {
         update(viewState: ViewState.identity)
@@ -49,8 +49,8 @@ fileprivate class Mtrix: NSObject, CALayerDelegate {
     let unit: CGFloat
     let canvasSize: NSSize
     
-    init(dpi: CGFloat, dims: CGFloat = 30) {
-        unit = dpi / 2.54
+    init(dpi: CGFloat? = nil, dims: CGFloat = 30) {
+        unit = (dpi ?? detectScreenDPI().width) / 2.54
         canvasSize = NSSize(width: unit * dims, height: unit * dims)
     }
     
@@ -75,5 +75,25 @@ fileprivate class Mtrix: NSObject, CALayerDelegate {
             ctx.addLine(to: NSPoint(x: end.x, y: y))
         }
         ctx.strokePath()
+    }
+}
+
+fileprivate func detectScreenDPI() -> NSSize {
+    let inMM = CGDisplayScreenSize(CGMainDisplayID())
+    let pixels = NSSize(
+        width: CGDisplayPixelsWide(CGMainDisplayID()),
+        height: CGDisplayPixelsHigh(CGMainDisplayID()))
+    
+    let result = (pixels / inMM) * 25.4
+    log.debug("Detected Screen DPI: \(result)")
+    return result
+}
+
+fileprivate extension NSSize {
+    static func /(left: NSSize, right: NSSize) -> NSSize {
+        return NSSize(width: left.width / right.width, height: left.height / right.height)
+    }
+    static func *(left: NSSize, right: CGFloat) -> NSSize {
+        return NSSize(width: left.width * right, height: left.height * right)
     }
 }
