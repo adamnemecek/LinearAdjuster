@@ -9,7 +9,7 @@
 import Cocoa
 
 class MtrixView: NSView {
-    private let unitSize = CGFloat(100.0)
+    private let unit = CGFloat(100.0)
     private var currentState = ViewState.identity
 
     override func draw(_ dirtyRect: NSRect) {
@@ -23,7 +23,6 @@ class MtrixView: NSView {
             currentState.transform(layer: layer)
         }
         
-        let unit = CGFloat(unitSize * currentState.zoom)
         let startX = dirtyRect.minX
         let startY = dirtyRect.minY
         let endX = dirtyRect.maxX
