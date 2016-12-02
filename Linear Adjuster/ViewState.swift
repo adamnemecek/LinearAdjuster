@@ -15,12 +15,12 @@ struct ViewState {
     init(zoom: CGFloat = 0, rotation: CGFloat = 0, skew: NSPoint = NSPoint(x: 0, y: 0)) {
         self.zoom = zoom
         self.rotation = rotation
-        self.skew = (h: skew.x, v: skew.y)
+        self.skew = skew
     }
     
     let zoom: CGFloat
     let rotation: CGFloat
-    let skew: (h: CGFloat, v: CGFloat)
+    let skew: NSPoint
     
     func transform(layer: CALayer) {
         log.debug("Transforming: \(self)")
@@ -49,14 +49,23 @@ extension ViewState {
         return ViewState(
             zoom: left.zoom + right.zoom,
             rotation: normalize(radians: left.rotation + right.rotation),
-            skew: NSPoint(x: left.skew.h + right.skew.h, y: left.skew.v + right.skew.v))
+            skew: left.skew + right.skew)
     }
     
     static func -(left: ViewState, right: ViewState) -> ViewState {
         return ViewState(
             zoom: left.zoom - right.zoom,
             rotation: normalize(radians: left.rotation - right.rotation),
-            skew: NSPoint(x: left.skew.h - right.skew.h, y: left.skew.v - right.skew.v))
+            skew: left.skew - right.skew)
+    }
+}
+
+fileprivate extension NSPoint {
+    static func +(left: NSPoint, right: NSPoint) -> NSPoint {
+        return NSPoint(x: left.x + right.x, y: left.y + right.y)
+    }
+    static func -(left: NSPoint, right: NSPoint) -> NSPoint {
+        return NSPoint(x: left.x - right.x, y: left.y - right.y)
     }
 }
 
