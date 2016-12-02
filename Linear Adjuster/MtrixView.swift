@@ -9,32 +9,49 @@
 import Cocoa
 
 fileprivate let unit = CGFloat(100.0)
+fileprivate let canvasSize = NSSize(width: unit * 30, height: unit * 30)
 
-class MtrixView: NSView, CALayerDelegate {
+class MtrixView: NSView {
+    private let mtrix = Mtrix()
 
     override func awakeFromNib() {
         update(viewState: ViewState.identity)
     }
-
+    
     func update(viewState: ViewState) {
         log.debug("Updating \(viewState)")
         if let layer = self.layer {
             let sub = CALayer()
-            sub.bounds = NSRect(x: 0, y: 0, width: 1000, height: 1000)
+            sub.bounds = NSRect(origin: NSPoint.zero, size: canvasSize)
             sub.backgroundColor = NSColor.white.cgColor
-            sub.position = NSPoint(x: 500, y: 500)
-            sub.delegate = self
+            sub.delegate = mtrix
             
             viewState.transform(layer: sub)
-            sub.setNeedsDisplay()
             
             layer.sublayers = nil
             layer.addSublayer(sub)
+            
+            needsDisplay = true
         }
     }
+    
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        log.debug("Drawing \(self)")
+        
+        if let sub = layer?.sublayers?.first {
+            sub.position = NSPoint(x: frame.midX, y: frame.midY)
+            log.debug("Set layer position: \(sub.position)")
+            
+            sub.setNeedsDisplay()
+        }
+    }
+}
 
+fileprivate class Mtrix: NSObject, CALayerDelegate {
+    
     func draw(_ layer: CALayer, in ctx: CGContext) {
-        log.info("Drawing Layer \(layer)")
+        log.debug("Drawing Mtrix \(self)")
         
         let rect = ctx.boundingBoxOfClipPath
         
