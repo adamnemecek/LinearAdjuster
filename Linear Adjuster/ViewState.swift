@@ -28,9 +28,7 @@ struct ViewState {
     }
     
     func transform(layer: CALayer) {
-        let center = NSPoint(
-            x: (layer.frame.minX + layer.frame.maxX) / 2,
-            y: (layer.frame.minY + layer.frame.maxY) / 2)
+        let center = NSPoint(x: layer.frame.midX, y: layer.frame.midY)
 
         layer.anchorPoint = NSPoint(x: 0.5, y: 0.5)
         layer.position = center
