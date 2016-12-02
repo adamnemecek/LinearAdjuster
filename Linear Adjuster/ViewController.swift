@@ -9,7 +9,21 @@
 import Cocoa
 import Quartz
 
-class ViewController: NSViewController {
+protocol ViewStateKeeper {
+    var currentState: ViewState { get set }
+}
+
+class ViewController: NSViewController, ViewStateKeeper {
+    private var _currentState = ViewState.identity
+    var currentState: ViewState {
+        get {
+            return _currentState
+        }
+        set {
+            _currentState = newValue
+            mtrixView.update(viewState: newValue)
+        }
+    }
     
     @IBOutlet weak var mtrixView: MtrixView!
     @IBOutlet weak var pdfView: PDFView!
@@ -26,6 +40,8 @@ class ViewController: NSViewController {
         pdfView.displaysPageBreaks = false
 
         app.pdfView = pdfView
+        app.view = self
+        log.debug("App view set.")
     }
 
     override var representedObject: Any? {
@@ -36,7 +52,7 @@ class ViewController: NSViewController {
     
     private func changeState(gesture: NSGestureRecognizer, offset: ViewState) {
         switch gesture.state {
-        case .began: preState = app.viewState
+        case .began: preState = currentState
         case .ended: preState = nil
         default: break
         }
@@ -46,10 +62,9 @@ class ViewController: NSViewController {
             func limit<N: FloatingPoint>(_ v: N, _ l: N) -> N {
                 return min(max(v, -l), l)
             }
-            app.viewState = state.change(skew: NSPoint(
+            currentState = state.change(skew: NSPoint(
                 x: limit(state.skew.x, 45),
                 y: limit(state.skew.y, 45)))
-            mtrixView.update(viewState: app.viewState)
         }
     }
     

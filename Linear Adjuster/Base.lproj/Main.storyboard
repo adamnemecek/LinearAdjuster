@@ -92,7 +92,7 @@
                                         </menuItem>
                                         <menuItem title="Save…" keyEquivalent="s" id="pxx-59-PXV">
                                             <connections>
-                                                <action selector="saveDocument:" target="Ady-hI-5gd" id="teZ-XB-qJY"/>
+                                                <action selector="saveCondition:" target="Voe-Tx-rLC" id="B4G-3p-DAv"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Save As…" keyEquivalent="S" id="Bw7-FT-i3A">
@@ -102,7 +102,7 @@
                                         </menuItem>
                                         <menuItem title="Revert to Saved" keyEquivalent="r" id="KaW-ft-85H">
                                             <connections>
-                                                <action selector="revertDocumentToSaved:" target="Ady-hI-5gd" id="iJ3-Pv-kwq"/>
+                                                <action selector="revertCondition:" target="Voe-Tx-rLC" id="bTb-ZB-PyL"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="aJh-i4-bef"/>

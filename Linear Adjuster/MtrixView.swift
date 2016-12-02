@@ -11,10 +11,6 @@ import Cocoa
 class MtrixView: NSView {
     private let mtrix = Mtrix()
 
-    override func awakeFromNib() {
-        update(viewState: ViewState.identity)
-    }
-    
     func update(viewState: ViewState) {
         log.debug("Updating \(viewState)")
         if let layer = self.layer {

@@ -27,11 +27,12 @@ let log: XCGLogger = {
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    var viewState = ViewState.identity
+    var view: ViewStateKeeper?
     var pdfView: PDFView?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        readCondition()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -67,5 +68,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let pdf = PDFDocument(url: url)
             view.document = pdf
         }
+    }
+    
+    @IBAction func saveCondition(_ sender: Any) {
+        writeCondition()
+    }
+    
+    @IBAction func revertCondition(_ sender: Any) {
+        readCondition()
+    }
+    
+    private func writeCondition() {
+        
+    }
+    
+    private func readCondition() {
+        log.debug("Reading condition")
+        view?.currentState = ViewState.identity
     }
 }
