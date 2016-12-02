@@ -8,12 +8,8 @@
 
 import Cocoa
 
-fileprivate let dpi: CGFloat = 120
-fileprivate let unit = dpi / 2.54
-fileprivate let canvasSize = NSSize(width: unit * 30, height: unit * 30)
-
 class MtrixView: NSView {
-    private let mtrix = Mtrix()
+    private let mtrix = Mtrix(dpi: 120)
 
     override func awakeFromNib() {
         update(viewState: ViewState.identity)
@@ -23,7 +19,7 @@ class MtrixView: NSView {
         log.debug("Updating \(viewState)")
         if let layer = self.layer {
             let sub = CALayer()
-            sub.bounds = NSRect(origin: NSPoint.zero, size: canvasSize)
+            sub.bounds = NSRect(origin: NSPoint.zero, size: mtrix.canvasSize)
             sub.backgroundColor = NSColor.white.cgColor
             sub.delegate = mtrix
             
@@ -50,6 +46,13 @@ class MtrixView: NSView {
 }
 
 fileprivate class Mtrix: NSObject, CALayerDelegate {
+    let unit: CGFloat
+    let canvasSize: NSSize
+    
+    init(dpi: CGFloat, dims: CGFloat = 30) {
+        unit = dpi / 2.54
+        canvasSize = NSSize(width: unit * dims, height: unit * dims)
+    }
     
     func draw(_ layer: CALayer, in ctx: CGContext) {
         log.debug("Drawing Mtrix \(self)")
