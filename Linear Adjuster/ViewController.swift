@@ -55,7 +55,7 @@ class ViewController: NSViewController {
     
     @IBAction func panGesture(_ sender: Any) {
         if let g = sender as? NSPanGestureRecognizer {
-            changeState(gesture: g, offset: ViewState.zero.change(skew: g.translation(in: mtrixView)))
+            changeState(gesture: g, offset: ViewState.zero.change(skew: g.translation(in: mtrixView) / 10))
         }
     }
     
@@ -69,5 +69,11 @@ class ViewController: NSViewController {
         if let g = sender as? NSMagnificationGestureRecognizer {
             changeState(gesture: g, offset: ViewState.zero.change(zoom: g.magnification))
         }
+    }
+}
+
+fileprivate extension NSPoint {
+    static func /(left: NSPoint, right: CGFloat) -> NSPoint {
+        return NSPoint(x: left.x / right, y: left.y / right)
     }
 }
