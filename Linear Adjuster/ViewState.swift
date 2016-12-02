@@ -34,11 +34,11 @@ struct ViewState {
         layer.position = center
         layer.transform = {
             var tr = CATransform3DIdentity
-            tr.m34 = CGFloat(-1.0/2000)
-            tr = CATransform3DScale(tr, zoom, zoom, zoom)
-            tr = CATransform3DRotate(tr, rotation, 0, 0, 1)
+            tr.m34 = CGFloat(-1.0/1000)
             tr = CATransform3DRotate(tr, toRadians(fromDegrees: skew.x), 0, 1, 0)
             tr = CATransform3DRotate(tr, toRadians(fromDegrees: skew.y), -1, 0, 0)
+            tr = CATransform3DRotate(tr, rotation, 0, 0, 1)
+            tr = CATransform3DScale(tr, zoom, zoom, zoom)
             
             log.debug("Transforming: \(self) -> \(tr)")
             return tr
