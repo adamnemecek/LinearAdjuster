@@ -11,8 +11,9 @@ import Cocoa
 
 struct ViewState {
     static let identity = ViewState(zoom: 1, rotation: 0, skew: NSPoint(x: 0, y: 0))
+    static let zero = ViewState(zoom: 0, rotation: 0, skew: NSPoint(x: 0, y: 0))
     
-    init(zoom: CGFloat = 0, rotation: CGFloat = 0, skew: NSPoint = NSPoint(x: 0, y: 0)) {
+    init(zoom: CGFloat, rotation: CGFloat, skew: NSPoint) {
         self.zoom = zoom
         self.rotation = rotation
         self.skew = skew
@@ -21,6 +22,10 @@ struct ViewState {
     let zoom: CGFloat
     let rotation: CGFloat
     let skew: NSPoint
+    
+    func change(zoom: CGFloat? = nil, rotation: CGFloat? = nil, skew: NSPoint? = nil) -> ViewState {
+        return ViewState(zoom: zoom ?? self.zoom, rotation: rotation ?? self.rotation, skew: skew ?? self.skew)
+    }
     
     func transform(layer: CALayer) {
         let center = NSPoint(

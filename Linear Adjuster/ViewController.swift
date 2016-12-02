@@ -41,26 +41,33 @@ class ViewController: NSViewController {
         default: break
         }
         if let pre = preState {
-            app.viewState = pre + offset
+            let state = pre + offset
+            
+            func limit<N: FloatingPoint>(_ v: N, _ l: N) -> N {
+                return min(max(v, -l), l)
+            }
+            app.viewState = state.change(skew: NSPoint(
+                x: limit(state.skew.x, 45),
+                y: limit(state.skew.y, 45)))
             mtrixView.update(viewState: app.viewState)
         }
     }
     
     @IBAction func panGesture(_ sender: Any) {
         if let g = sender as? NSPanGestureRecognizer {
-            changeState(gesture: g, offset: ViewState(skew: g.translation(in: mtrixView)))
+            changeState(gesture: g, offset: ViewState.zero.change(skew: g.translation(in: mtrixView)))
         }
     }
     
     @IBAction func rotationGesture(_ sender: Any) {
         if let g = sender as? NSRotationGestureRecognizer {
-            changeState(gesture: g, offset: ViewState(rotation: g.rotation))
+            changeState(gesture: g, offset: ViewState.zero.change(rotation: g.rotation))
         }
     }
     
     @IBAction func zoomGesture(_ sender: Any) {
         if let g = sender as? NSMagnificationGestureRecognizer {
-            changeState(gesture: g, offset: ViewState(zoom: g.magnification))
+            changeState(gesture: g, offset: ViewState.zero.change(zoom: g.magnification))
         }
     }
 }
