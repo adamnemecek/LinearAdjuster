@@ -31,8 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var pdfView: PDFView?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
-        readCondition()
+        view?.currentState = storedViewState
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -71,19 +70,36 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func saveCondition(_ sender: Any) {
-        writeCondition()
+        if let view = self.view {
+             storedViewState = view.currentState
+        }
     }
     
     @IBAction func revertCondition(_ sender: Any) {
-        readCondition()
+        view?.currentState = storedViewState
     }
     
-    private func writeCondition() {
-        
+    private var storage: UserDefaults {
+        get {
+            return NSUserDefaultsController.shared().defaults
+        }
     }
     
-    private func readCondition() {
-        log.debug("Reading condition")
-        view?.currentState = ViewState.identity
+    private let storedViewStateKey = "ViewState"
+    private var storedViewState: ViewState {
+        get {
+            log.debug("Reading \(self.storedViewStateKey)")
+            if let dict = storage.dictionary(forKey: storedViewStateKey) {
+                return ViewState.load(dictionary: dict) ?? ViewState.identity
+            } else {
+                log.warning("No stored \(self.storedViewStateKey)")
+                return ViewState.identity
+            }
+        }
+        set {
+            let dict = newValue.asDictionary()
+            log.info("Saving \(self.storedViewStateKey): \(dict)")
+            storage.set(dict, forKey: storedViewStateKey)
+        }
     }
 }

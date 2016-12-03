@@ -44,6 +44,29 @@ struct ViewState {
             return tr
         }()
     }
+    
+    func asDictionary() -> [String: Any] {
+        var dict = [String: Any]()
+        dict["zoom"] = zoom
+        dict["rotation"] = rotation
+        dict["skew.x"] = skew.x
+        dict["skew.y"] = skew.y
+        return dict
+    }
+    
+    static func load(dictionary dict: [String: Any]) -> ViewState? {
+        if
+            let zoom = dict["zoom"] as? CGFloat,
+            let rotation = dict["rotation"] as? CGFloat,
+            let skewX = dict["skew.x"] as? CGFloat,
+            let skewY = dict["skew.y"] as? CGFloat
+        {
+            return ViewState(zoom: zoom, rotation: rotation, skew: NSPoint(x: skewX, y: skewY))
+        } else {
+            log.warning("Cannot load from dictionary: \(dict)")
+            return nil
+        }
+    }
 }
 
 extension ViewState {
