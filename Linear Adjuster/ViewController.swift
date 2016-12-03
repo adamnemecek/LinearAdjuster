@@ -56,6 +56,10 @@ class ViewController: NSViewController, ViewStateKeeper {
         case .ended: preState = nil
         default: break
         }
+        update(offset)
+    }
+    
+    private func update(_ offset: ViewState) {
         if let pre = preState {
             let state = pre + offset
             
@@ -65,6 +69,26 @@ class ViewController: NSViewController, ViewStateKeeper {
             currentState = state.change(skew: NSPoint(
                 x: limit(state.skew.x, 45),
                 y: limit(state.skew.y, 45)))
+        }
+    }
+    
+    override func keyDown(with event: NSEvent) {
+        let u: CGFloat = 0.1
+        let c = Int(event.keyCode)
+        switch c {
+        case 123: skew(x: -u)
+        case 124: skew(x: +u)
+        case 125: skew(y: -u)
+        case 126: skew(y: +u)
+        default: log.debug("Pressed key: \(c)")
+        }
+    }
+    
+    private func skew(x: CGFloat = 0, y: CGFloat = 0) {
+        if preState == nil {
+            preState = currentState
+            update(ViewState.zero.change(skew: NSPoint(x: x, y: y)))
+            preState = nil
         }
     }
     
