@@ -76,7 +76,7 @@ class ViewController: NSViewController, ViewStateKeeper {
     
     @IBAction func rotationGesture(_ sender: Any) {
         if let g = sender as? NSRotationGestureRecognizer {
-            changeState(gesture: g, offset: ViewState.zero.change(rotation: g.rotation))
+            changeState(gesture: g, offset: ViewState.zero.change(warp: g.rotation))
         }
     }
     
