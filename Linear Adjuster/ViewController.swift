@@ -109,19 +109,26 @@ class ViewController: NSViewController, ViewStateKeeper {
             let withCtl = event.modifierFlags.contains(NSEventModifierFlags.control)
             let withCmd = event.modifierFlags.contains(NSEventModifierFlags.command)
             let withOpt = event.modifierFlags.contains(NSEventModifierFlags.option)
+            let withSht = event.modifierFlags.contains(NSEventModifierFlags.shift)
             switch c {
             case .keyX where withCtl: switchView()
             case .keyC where withCtl: clear()
             case .keyM where withCtl: mirror()
+            
             case .arrowRight where withCmd: warp(+0.001)
             case .arrowLeft where withCmd: warp(-0.001)
+            
+            case .arrowDown where withCmd && withSht: zoom(y: -0.001)
+            case .arrowUp where withCmd && withSht: zoom(y: 0.001)
             case .arrowDown where withCmd: zoom(-0.001)
             case .arrowUp where withCmd: zoom(+0.001)
+            
             case .arrowRight where withOpt: skew(x: -0.1)
             case .arrowLeft where withOpt: skew(x: +0.1)
             case .arrowDown where withOpt: skew(y: -0.1)
             case .arrowUp where withOpt: skew(y: +0.1)
-            default: log.warning("Unsupported keyCode: \(c) with Flags(ctl: \(withCtl), cmd: \(withCmd), opt: \(withOpt))")
+            
+            default: log.warning("Unsupported keyCode: \(c) with Flags(shift: \(withSht), ctl: \(withCtl), cmd: \(withCmd), opt: \(withOpt))")
             }
         } else {
             log.debug("Pressed key: \(event.keyCode)")
@@ -146,7 +153,7 @@ class ViewController: NSViewController, ViewStateKeeper {
         changeState(gesture: gesture, offset: ViewState.zero.change(warp: v))
     }
     
-    private func zoom(_ x: CGFloat, _ y: CGFloat? = nil, gesture: NSGestureRecognizer? = nil) {
+    private func zoom(_ x: CGFloat = 0, y: CGFloat? = nil, gesture: NSGestureRecognizer? = nil) {
         changeState(gesture: gesture, offset: ViewState.zero.change(zoom: NSSize(width: x, height: y ?? x)))
     }
     
