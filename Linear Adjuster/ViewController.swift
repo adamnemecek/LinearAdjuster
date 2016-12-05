@@ -58,7 +58,8 @@ class ViewController: NSViewController, ViewStateKeeper {
             if isPdf {
                 let newLayer = CALayer()
                 pdfView.layer = newLayer
-                currentState.transform(layer: newLayer)
+                pdfView.scaleFactor = currentState.zoom
+                currentState.transform(layer: newLayer, withZoom: false)
             } else {
                 pdfLayer.isHidden = true
             }

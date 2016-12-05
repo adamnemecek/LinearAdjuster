@@ -29,11 +29,14 @@ struct ViewState {
         return ViewState(zoom: zoom ?? self.zoom, warp: warp ?? self.warp, skew: skew ?? self.skew, mirror: mirror ?? self.mirror)
     }
     
-    func transform(layer: CALayer) {
+    func transform(layer: CALayer, withZoom: Bool = true) {
         let center = NSPoint(x: layer.frame.midX, y: layer.frame.midY)
 
         layer.anchorPoint = NSPoint(x: 0.5, y: 0.5)
         layer.position = center
+        if withZoom {
+            layer.contentsScale = zoom
+        }
         layer.transform = {
             let mr = CGFloat(1 - 2 * (mirror ? 1 : 0))
             var tr = CATransform3DIdentity
@@ -41,7 +44,9 @@ struct ViewState {
             tr.m34 = CGFloat(-1.0/1000)
             tr = CATransform3DRotate(tr, toRadians(fromDegrees: skew.x), 0, 1, 0)
             tr = CATransform3DRotate(tr, toRadians(fromDegrees: skew.y), -1, 0, 0)
-            tr = CATransform3DScale(tr, zoom, zoom, zoom)
+            if withZoom {
+                tr = CATransform3DScale(tr, zoom, zoom, zoom)
+            }
             tr.m11 = tr.m11 * mr
             
             log.debug("Transforming: \(self) -> \(tr)")
