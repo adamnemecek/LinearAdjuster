@@ -113,7 +113,7 @@ class ViewController: NSViewController, ViewStateKeeper {
             case .arrowLeft where withOpt: skew(x: +0.1)
             case .arrowDown where withOpt: skew(y: -0.1)
             case .arrowUp where withOpt: skew(y: +0.1)
-            default: log.warning("Unsupported keyCode: \(c) with Flags:\(event.modifierFlags)")
+            default: log.warning("Unsupported keyCode: \(c) with Flags(ctl: \(withCtl), cmd: \(withCmd), opt: \(withOpt))")
             }
         } else {
             log.debug("Pressed key: \(event.keyCode)")
