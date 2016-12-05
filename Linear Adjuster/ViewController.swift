@@ -59,6 +59,14 @@ class ViewController: NSViewController, ViewStateKeeper {
         update(offset)
     }
     
+    private func changeState(_ offset: ViewState) {
+        if preState == nil {
+            preState = currentState
+            update(offset)
+            preState = nil
+        }
+    }
+    
     private func update(_ offset: ViewState) {
         if let pre = preState {
             let state = pre + offset
@@ -73,32 +81,37 @@ class ViewController: NSViewController, ViewStateKeeper {
     }
     
     override func keyDown(with event: NSEvent) {
-        let u: CGFloat = 0.1
         let c = Int(event.keyCode)
+        let withCtl = event.modifierFlags.contains(NSEventModifierFlags.control)
+        let withCmd = event.modifierFlags.contains(NSEventModifierFlags.command)
         switch c {
-        case 123: skew(x: -u)
-        case 124: skew(x: +u)
-        case 125: skew(y: -u)
-        case 126: skew(y: +u)
-        case 46 where event.modifierFlags.contains(NSEventModifierFlags.control): mirror()
+        case 46 where withCtl: mirror()
+        case 123 where withCmd: warp(-0.001)
+        case 124 where withCmd: warp(+0.001)
+        case 125 where withCmd: zoom(-0.001)
+        case 126 where withCmd: zoom(+0.001)
+        case 123: skew(x: -0.1)
+        case 124: skew(x: +0.1)
+        case 125: skew(y: -0.1)
+        case 126: skew(y: +0.1)
         default: log.debug("Pressed key: \(c)")
         }
     }
     
     private func mirror() {
-        if preState == nil {
-            preState = currentState
-            update(ViewState.zero.change(mirror: true))
-            preState = nil
-        }
+        changeState(ViewState.zero.change(mirror: true))
     }
     
     private func skew(x: CGFloat = 0, y: CGFloat = 0) {
-        if preState == nil {
-            preState = currentState
-            update(ViewState.zero.change(skew: NSPoint(x: x, y: y)))
-            preState = nil
-        }
+        changeState(ViewState.zero.change(skew: NSPoint(x: x, y: y)))
+    }
+    
+    private func warp(_ v: CGFloat) {
+        changeState(ViewState.zero.change(warp: v))
+    }
+    
+    private func zoom(_ v: CGFloat) {
+        changeState(ViewState.zero.change(zoom: v))
     }
     
     @IBAction func panGesture(_ sender: Any) {
