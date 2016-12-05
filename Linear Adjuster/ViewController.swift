@@ -66,7 +66,7 @@ class ViewController: NSViewController, ViewStateKeeper {
             if isPdf {
                 let newLayer = CALayer()
                 pdfView.layer = newLayer
-                pdfView.scaleFactor = pdfScale * currentState.zoom
+                pdfView.scaleFactor = pdfScale * currentState.zoom.width
                 log.debug("PDF Scale: \(self.pdfView.scaleFactor)")
                 currentState.transform(layer: newLayer, withZoom: false)
             } else {
@@ -75,33 +75,32 @@ class ViewController: NSViewController, ViewStateKeeper {
         }
     }
     
-    private func changeState(gesture: NSGestureRecognizer, offset: ViewState) {
-        switch gesture.state {
-        case .began: preState = currentState
-        case .ended: preState = nil
-        default: break
-        }
-        update(offset)
-    }
-    
-    private func changeState(_ offset: ViewState) {
-        if preState == nil {
-            preState = currentState
-            update(offset)
-            preState = nil
-        }
-    }
-    
-    private func update(_ offset: ViewState) {
-        if !isPdf, let pre = preState {
-            let state = pre + offset
-            
-            func limit<N: FloatingPoint>(_ v: N, _ l: N) -> N {
-                return min(max(v, -l), l)
+    private func changeState(gesture: NSGestureRecognizer? = nil, offset: ViewState) {
+        func update(_ offset: ViewState) {
+            if !isPdf, let pre = preState {
+                let state = pre + offset
+                
+                func limit<N: FloatingPoint>(_ v: N, _ l: N) -> N {
+                    return min(max(v, -l), l)
+                }
+                currentState = state.change(skew: NSPoint(
+                    x: limit(state.skew.x, 45),
+                    y: limit(state.skew.y, 45)))
             }
-            currentState = state.change(skew: NSPoint(
-                x: limit(state.skew.x, 45),
-                y: limit(state.skew.y, 45)))
+        }
+        if let g = gesture {
+            switch g.state {
+            case .began: preState = currentState
+            case .ended: preState = nil
+            default: break
+            }
+            update(offset)
+        } else {
+            if preState == nil {
+                preState = currentState
+                update(offset)
+                preState = nil
+            }
         }
     }
     
@@ -136,36 +135,36 @@ class ViewController: NSViewController, ViewStateKeeper {
     }
     
     private func mirror() {
-        changeState(ViewState.zero.change(mirror: true))
+        changeState(gesture: nil, offset: ViewState.zero.change(mirror: true))
     }
     
-    private func skew(x: CGFloat = 0, y: CGFloat = 0) {
-        changeState(ViewState.zero.change(skew: NSPoint(x: x, y: y)))
+    private func skew(_ pos: NSPoint? = nil, x: CGFloat = 0, y: CGFloat = 0, gesture: NSGestureRecognizer? = nil) {
+        changeState(gesture: gesture, offset: ViewState.zero.change(skew: pos ?? NSPoint(x: x, y: y)))
     }
     
-    private func warp(_ v: CGFloat) {
-        changeState(ViewState.zero.change(warp: v))
+    private func warp(_ v: CGFloat, gesture: NSGestureRecognizer? = nil) {
+        changeState(gesture: gesture, offset: ViewState.zero.change(warp: v))
     }
     
-    private func zoom(_ v: CGFloat) {
-        changeState(ViewState.zero.change(zoom: v))
+    private func zoom(_ x: CGFloat, _ y: CGFloat? = nil, gesture: NSGestureRecognizer? = nil) {
+        changeState(gesture: gesture, offset: ViewState.zero.change(zoom: NSSize(width: x, height: y ?? x)))
     }
     
     @IBAction func panGesture(_ sender: Any) {
         if let g = sender as? NSPanGestureRecognizer {
-            changeState(gesture: g, offset: ViewState.zero.change(skew: g.translation(in: mtrixView) / 10))
+            skew(g.translation(in: mtrixView) / 10, gesture: g)
         }
     }
     
     @IBAction func rotationGesture(_ sender: Any) {
         if let g = sender as? NSRotationGestureRecognizer {
-            changeState(gesture: g, offset: ViewState.zero.change(warp: g.rotation))
+            warp(g.rotation, gesture: g)
         }
     }
     
     @IBAction func zoomGesture(_ sender: Any) {
         if let g = sender as? NSMagnificationGestureRecognizer {
-            changeState(gesture: g, offset: ViewState.zero.change(zoom: g.magnification))
+            zoom(g.magnification, gesture: g)
         }
     }
 }
