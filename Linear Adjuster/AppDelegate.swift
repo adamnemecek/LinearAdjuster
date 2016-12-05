@@ -100,6 +100,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let dict = newValue.asDictionary()
             log.info("Saving \(self.storedViewStateKey): \(dict)")
             storage.set(dict, forKey: storedViewStateKey)
+            
+            let popup = NSAlert()
+            popup.messageText = "\(self.storedViewStateKey) is saved"
+            popup.runModal()
         }
     }
 }
