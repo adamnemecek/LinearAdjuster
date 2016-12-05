@@ -80,7 +80,16 @@ class ViewController: NSViewController, ViewStateKeeper {
         case 124: skew(x: +u)
         case 125: skew(y: -u)
         case 126: skew(y: +u)
+        case 46 where event.modifierFlags.contains(NSEventModifierFlags.control): mirror()
         default: log.debug("Pressed key: \(c)")
+        }
+    }
+    
+    private func mirror() {
+        if preState == nil {
+            preState = currentState
+            update(ViewState.zero.change(mirror: true))
+            preState = nil
         }
     }
     
