@@ -97,21 +97,32 @@ class ViewController: NSViewController, ViewStateKeeper {
     }
     
     override func keyDown(with event: NSEvent) {
-        let c = Int(event.keyCode)
-        let withCtl = event.modifierFlags.contains(NSEventModifierFlags.control)
-        let withCmd = event.modifierFlags.contains(NSEventModifierFlags.command)
-        switch c {
-        case 7 where withCtl: switchView()
-        case 46 where withCtl: mirror()
-        case 123 where withCmd: warp(+0.001)
-        case 124 where withCmd: warp(-0.001)
-        case 125 where withCmd: zoom(-0.001)
-        case 126 where withCmd: zoom(+0.001)
-        case 123: skew(x: -0.1)
-        case 124: skew(x: +0.1)
-        case 125: skew(y: -0.1)
-        case 126: skew(y: +0.1)
-        default: log.debug("Pressed key: \(c)")
+        if let c = KeyCode(rawValue: event.keyCode) {
+            let withCtl = event.modifierFlags.contains(NSEventModifierFlags.control)
+            let withCmd = event.modifierFlags.contains(NSEventModifierFlags.command)
+            let withOpt = event.modifierFlags.contains(NSEventModifierFlags.option)
+            switch c {
+            case .keyX where withCtl: switchView()
+            case .keyC where withCtl: clear()
+            case .keyM where withCtl: mirror()
+            case .arrowRight where withCmd: warp(+0.001)
+            case .arrowLeft where withCmd: warp(-0.001)
+            case .arrowDown where withCmd: zoom(-0.001)
+            case .arrowUp where withCmd: zoom(+0.001)
+            case .arrowRight where withOpt: skew(x: -0.1)
+            case .arrowLeft where withOpt: skew(x: +0.1)
+            case .arrowDown where withOpt: skew(y: -0.1)
+            case .arrowUp where withOpt: skew(y: +0.1)
+            default: log.warning("Unsupported keyCode: \(c) with Flags:\(event.modifierFlags)")
+            }
+        } else {
+            log.debug("Pressed key: \(event.keyCode)")
+        }
+    }
+    
+    private func clear() {
+        if !isPdf && preState == nil {
+            currentState = ViewState.identity
         }
     }
     
@@ -148,6 +159,16 @@ class ViewController: NSViewController, ViewStateKeeper {
             changeState(gesture: g, offset: ViewState.zero.change(zoom: g.magnification))
         }
     }
+}
+
+fileprivate enum KeyCode: UInt16 {
+    case keyX = 7
+    case keyC = 8
+    case keyM = 46
+    case arrowUp = 126
+    case arrowDown = 125
+    case arrowLeft = 124
+    case arrowRight = 123
 }
 
 fileprivate extension NSPoint {
