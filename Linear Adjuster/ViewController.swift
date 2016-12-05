@@ -76,7 +76,7 @@ class ViewController: NSViewController, ViewStateKeeper {
     }
     
     private func changeState(gesture: NSGestureRecognizer? = nil, offset: ViewState) {
-        func update(_ offset: ViewState) {
+        func update() {
             if !isPdf, let pre = preState {
                 let state = pre + offset
                 
@@ -94,11 +94,11 @@ class ViewController: NSViewController, ViewStateKeeper {
             case .ended: preState = nil
             default: break
             }
-            update(offset)
+            update()
         } else {
             if preState == nil {
                 preState = currentState
-                update(offset)
+                update()
                 preState = nil
             }
         }
