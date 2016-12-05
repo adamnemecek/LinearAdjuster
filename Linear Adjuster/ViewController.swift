@@ -86,8 +86,8 @@ class ViewController: NSViewController, ViewStateKeeper {
         let withCmd = event.modifierFlags.contains(NSEventModifierFlags.command)
         switch c {
         case 46 where withCtl: mirror()
-        case 123 where withCmd: warp(-0.001)
-        case 124 where withCmd: warp(+0.001)
+        case 123 where withCmd: warp(+0.001)
+        case 124 where withCmd: warp(-0.001)
         case 125 where withCmd: zoom(-0.001)
         case 126 where withCmd: zoom(+0.001)
         case 123: skew(x: -0.1)
