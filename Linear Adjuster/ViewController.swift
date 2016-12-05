@@ -25,6 +25,8 @@ class ViewController: NSViewController, ViewStateKeeper {
         }
     }
     
+    private var isPdf = false
+    
     @IBOutlet weak var mtrixView: MtrixView!
     @IBOutlet weak var pdfView: PDFView!
     
@@ -35,9 +37,7 @@ class ViewController: NSViewController, ViewStateKeeper {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pdfView.autoScales = false
-        pdfView.scaleFactor = 1.0
-        pdfView.displaysPageBreaks = false
+        pdfView.layer?.isHidden = !isPdf
 
         app.pdfView = pdfView
         app.view = self
@@ -47,6 +47,21 @@ class ViewController: NSViewController, ViewStateKeeper {
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
+        }
+    }
+    
+    private func switchView() {
+        log.info("Switching view...")
+        if let mtrixLayer = mtrixView.layer {
+            isPdf = !isPdf
+            mtrixLayer.isHidden = isPdf
+            if isPdf {
+                let newLayer = CALayer()
+                pdfView.layer = newLayer
+                currentState.transform(layer: newLayer)
+            } else {
+                pdfView.layer = nil
+            }
         }
     }
     
@@ -68,7 +83,7 @@ class ViewController: NSViewController, ViewStateKeeper {
     }
     
     private func update(_ offset: ViewState) {
-        if let pre = preState {
+        if !isPdf, let pre = preState {
             let state = pre + offset
             
             func limit<N: FloatingPoint>(_ v: N, _ l: N) -> N {
@@ -85,6 +100,7 @@ class ViewController: NSViewController, ViewStateKeeper {
         let withCtl = event.modifierFlags.contains(NSEventModifierFlags.control)
         let withCmd = event.modifierFlags.contains(NSEventModifierFlags.command)
         switch c {
+        case 7 where withCtl: switchView()
         case 46 where withCtl: mirror()
         case 123 where withCmd: warp(+0.001)
         case 124 where withCmd: warp(-0.001)
