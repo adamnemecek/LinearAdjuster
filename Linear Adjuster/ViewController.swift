@@ -52,7 +52,7 @@ class ViewController: NSViewController, ViewStateKeeper {
     
     private func switchView() {
         log.info("Switching view...")
-        if let mtrixLayer = mtrixView.layer {
+        if let mtrixLayer = mtrixView.layer, let pdfLayer = pdfView.layer {
             isPdf = !isPdf
             mtrixLayer.isHidden = isPdf
             if isPdf {
@@ -60,7 +60,7 @@ class ViewController: NSViewController, ViewStateKeeper {
                 pdfView.layer = newLayer
                 currentState.transform(layer: newLayer)
             } else {
-                pdfView.layer = nil
+                pdfLayer.isHidden = true
             }
         }
     }
