@@ -74,7 +74,7 @@ fileprivate class Mtrix: NSObject, CALayerDelegate {
     }
 }
 
-fileprivate func detectScreenDPI() -> NSSize {
+func detectScreenDPI() -> NSSize {
     let inMM = CGDisplayScreenSize(CGMainDisplayID())
     let pixels = NSSize(
         width: CGDisplayPixelsWide(CGMainDisplayID()),

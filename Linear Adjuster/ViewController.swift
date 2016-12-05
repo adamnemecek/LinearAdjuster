@@ -25,6 +25,12 @@ class ViewController: NSViewController, ViewStateKeeper {
         }
     }
     
+    var pdfScale: CGFloat {
+        get {
+            return detectScreenDPI().width / 72
+        }
+    }
+    
     private var isPdf = false
     
     @IBOutlet weak var mtrixView: MtrixView!
@@ -37,6 +43,8 @@ class ViewController: NSViewController, ViewStateKeeper {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        pdfView.autoScales = false
+        pdfView.scaleFactor = pdfScale
         pdfView.layer?.isHidden = !isPdf
 
         app.pdfView = pdfView
@@ -58,7 +66,8 @@ class ViewController: NSViewController, ViewStateKeeper {
             if isPdf {
                 let newLayer = CALayer()
                 pdfView.layer = newLayer
-                pdfView.scaleFactor = currentState.zoom
+                pdfView.scaleFactor = pdfScale * currentState.zoom
+                log.debug("PDF Scale: \(self.pdfView.scaleFactor)")
                 currentState.transform(layer: newLayer, withZoom: false)
             } else {
                 pdfLayer.isHidden = true
