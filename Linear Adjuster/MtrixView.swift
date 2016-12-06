@@ -9,7 +9,7 @@
 import Cocoa
 
 class MtrixView: NSView {
-    private let mtrix = Mtrix()
+    private let mtrix = Mtrix(unitLengthInCM: 10, dims: NSSize(width: 10, height: 6))
 
     func update(viewState: ViewState) {
         log.debug("Updating \(viewState)")
@@ -45,9 +45,10 @@ fileprivate class Mtrix: NSObject, CALayerDelegate {
     let unit: CGFloat
     let canvasSize: NSSize
     
-    init(dpi: CGFloat? = nil, dims: CGFloat = 30) {
-        unit = (dpi ?? detectScreenDPI().width) / 2.54
-        canvasSize = NSSize(width: unit * dims, height: unit * dims)
+    init(dpi: CGFloat? = nil, unitLengthInCM: CGFloat, dims: NSSize) {
+        let cm = (dpi ?? detectScreenDPI().width) / 2.54
+        unit = cm * unitLengthInCM
+        canvasSize = dims * unit
     }
     
     func draw(_ layer: CALayer, in ctx: CGContext) {
