@@ -43,6 +43,7 @@ class ViewController: NSViewController, ViewStateKeeper {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        pdfView.displayMode = PDFDisplayMode.singlePage
         pdfView.autoScales = false
         pdfView.scaleFactor = pdfScale
         pdfView.layer?.isHidden = !isPdf
