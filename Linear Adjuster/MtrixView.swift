@@ -54,7 +54,7 @@ fileprivate class Mtrix: NSObject, CALayerDelegate {
     func draw(_ layer: CALayer, in ctx: CGContext) {
         log.debug("Drawing Mtrix \(self)")
         
-        let rect = ctx.boundingBoxOfClipPath
+        let rect = NSRect(origin: ctx.boundingBoxOfClipPath.origin, size: canvasSize)
         
         let start = NSPoint(x: rect.minX, y: rect.minY)
         let end = NSPoint(x: rect.maxX, y: rect.maxY)
@@ -71,6 +71,17 @@ fileprivate class Mtrix: NSObject, CALayerDelegate {
             ctx.move(to: NSPoint(x: start.x, y: y))
             ctx.addLine(to: NSPoint(x: end.x, y: y))
         }
+        ctx.strokePath()
+        
+        // Center Line
+        ctx.setStrokeColor(NSColor.red.cgColor)
+        
+        ctx.move(to: NSPoint(x: rect.midX, y: start.y))
+        ctx.addLine(to: NSPoint(x: rect.midX, y: end.y))
+        
+        ctx.move(to: NSPoint(x: start.x, y: rect.midY))
+        ctx.addLine(to: NSPoint(x: end.x, y: rect.midY))
+        
         ctx.strokePath()
     }
 }
